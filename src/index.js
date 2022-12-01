@@ -184,9 +184,10 @@ export default class ParagraphEx {
             icon: tune.icon,
             label: this.api.i18n.t(tune.title),
             onActivate: () => {
-                this._toggleTune(tune.value);
+                this.setAlignment(tune.value);
             },
             closeOnActivate: true,
+            isActive: this.currentAlignment.value === tune.value,
         }))
     }
 
@@ -284,17 +285,29 @@ export default class ParagraphEx {
     }
 
     /**
-     * @private
-     * Click on the Settings Button
-     * If the same alignment is clicked, we reset to default status
-     * @param {string} tune — tune value from this.settings
+     * Set desired alignment
+     * @param {string} alignment — tune value from this.settings
      */
-    _toggleTune(tune) {
-        if (this.data.alignment === tune) {
-            this.data.alignment = this.config.defaultAlignment;
-        } else {
-            this.data.alignment = tune;
+    setAlignment(alignment) {
+        this.data = {
+            text: this.data.text,
+            alignment: alignment
+        };
+    }
+
+    /**
+     * Get current alignment
+     *
+     * @returns {level}
+     */
+    get currentAlignment() {
+        let alignment = this._tunesButtons.find(alignmentItem => alignmentItem.value === this._data.alignment);
+
+        if (!alignment) {
+            alignment = ParagraphEx.DEFAULT_ALIGNMENT;
         }
+
+        return alignment;
     }
 
     /**
