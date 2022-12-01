@@ -293,6 +293,7 @@ export default class ParagraphEx {
             text: this.data.text,
             alignment: alignment
         };
+        this._element.classList.toggle(this._CSS.alignment[name], name === this.data.alignment)
     }
 
     /**
