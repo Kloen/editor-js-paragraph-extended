@@ -282,6 +282,8 @@ export default class ParagraphEx {
         this._data = data || {};
 
         this._element.innerHTML = this._data.text || '';
+        this._element.className = ""
+        this._element.classList.add(this._CSS.wrapper, this._CSS.block, this._CSS.alignment[this._data.alignment]);
     }
 
     /**
@@ -293,7 +295,6 @@ export default class ParagraphEx {
             text: this.data.text,
             alignment: alignment
         };
-        this._element.classList.toggle(this._CSS.alignment[name], name === this.data.alignment)
     }
 
     /**
