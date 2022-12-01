@@ -22,12 +22,12 @@
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^3.5.3",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.7.2",
     "raw-loader": "^4.0.2",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
   },
   "dependencies": {
     "@codexteam/icons": "^0.0.6"

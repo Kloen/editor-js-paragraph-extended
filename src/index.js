@@ -6,11 +6,12 @@ import './index.css';
 import {IconAlignCenter, IconAlignJustify, IconAlignLeft, IconAlignRight, IconText} from '@codexteam/icons'
 
 /**
- * Base Paragraph Block for the Editor.js.
+ * Extended Paragraph Block for the Editor.js.
  * Represents simple paragraph
  *
- * @author CodeX (team@codex.so)
- * @copyright CodeX 2018
+ * Based on the base Paragraph Block by Codex.
+ *
+ * @author Klöen Lansfiel (kloen@kloenlansfiel.com)
  * @license The MIT License (MIT)
  */
 
