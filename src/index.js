@@ -26,7 +26,7 @@ import {IconAlignCenter, IconAlignJustify, IconAlignLeft, IconAlignRight, IconTe
  * @description Tool's input and output data format
  * @property {String} text — Paragraph's content. Can include HTML tags: <a><b><i>
  */
-export default class Paragraph {
+export default class ParagraphEx {
     /**
      * Default placeholder for Paragraph Tool
      *
@@ -81,10 +81,10 @@ export default class Paragraph {
          * Placeholder for paragraph if it is first Block
          * @type {string}
          */
-        this._placeholder = config.placeholder ? config.placeholder : Paragraph.DEFAULT_PLACEHOLDER;
+        this._placeholder = config.placeholder ? config.placeholder : ParagraphEx.DEFAULT_PLACEHOLDER;
         this._data = {
             text: data.text || '',
-            alignment: data.alignment || config.defaultAlignment || Paragraph.DEFAULT_ALIGNMENT
+            alignment: data.alignment || config.defaultAlignment || ParagraphEx.DEFAULT_ALIGNMENT
         }
         this._tunesButtons = [
             {
@@ -232,7 +232,7 @@ export default class Paragraph {
     onPaste(event) {
         this.data = {
             text: event.detail.data.innerHTML,
-            alignment: event.detail.data.style.textAlign || this.config.defaultAlignment || Paragraph.DEFAULT_ALIGNMENT,
+            alignment: event.detail.data.style.textAlign || this.config.defaultAlignment || ParagraphEx.DEFAULT_ALIGNMENT,
         };
     }
 
@@ -325,7 +325,7 @@ export default class Paragraph {
     static get toolbox() {
         return {
             icon: IconText,
-            title: 'Text'
+            title: 'Paragraph'
         };
     }
 }
