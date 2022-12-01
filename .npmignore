@@ -1,4 +1,4 @@
 .idea/
 src/
 webpack.config.js
-yarn.lock
+package-lock.json
