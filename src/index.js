@@ -38,28 +38,13 @@ export default class Paragraph {
     }
 
     /**
-     * Allowed paragraph alignments
-     *
-     * @public
-     * @returns {{left: string, center: string}}
-     */
-    static get ALIGNMENTS() {
-        return {
-            left: 'left',
-            center: 'center',
-            right: 'right',
-            justify: 'justify'
-        };
-    }
-
-    /**
      * Default paragraph alignment
      *
      * @public
      * @returns {string}
      */
     static get DEFAULT_ALIGNMENT() {
-        return Paragraph.ALIGNMENTS.left;
+        return 'left';
     }
 
     /**
