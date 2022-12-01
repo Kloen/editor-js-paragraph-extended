@@ -88,19 +88,23 @@ export default class ParagraphEx {
         }
         this._tunesButtons = [
             {
-                name: 'left',
+                title: "Align Left",
+                value: 'left',
                 icon: IconAlignLeft
             },
             {
-                name: 'center',
+                title: "Align Center",
+                value: 'center',
                 icon: IconAlignCenter
             },
             {
-                name: 'right',
+                title: "Align Right",
+                value: 'right',
                 icon: IconAlignRight
             },
             {
-                name: 'justify',
+                title: "Justify",
+                value: 'justify',
                 icon: IconAlignJustify
             }
         ];
@@ -172,30 +176,18 @@ export default class ParagraphEx {
 
     /**
      * Renders tunes buttons
+     *
+     * @returns {Array}
      */
     renderSettings() {
-        const wrapper = document.createElement('div');
-        this._tunesButtons.map(tune => {
-            const button = document.createElement('div');
-            button.classList.add('cdx-settings-button');
-            button.innerHTML = tune.icon;
-            // if we pass default alignment on config tool, it must display activated because
-            // isn't the default lifecycle
-            button.classList.toggle(this._CSS.settingsButtonActive, tune.name === (this.data.alignment || this.config.defaultAlignment));
-            wrapper.appendChild(button);
-            return button;
-        }).forEach((element, index, elements) => {
-            element.addEventListener('click', () => {
-                this._toggleTune(this._tunesButtons[index].name);
-                elements.forEach((el, i) => {
-                    const { name } = this._tunesButtons[i];
-                    el.classList.toggle(this._CSS.settingsButtonActive, name === this.data.alignment);
-                    this._element.classList.toggle(this._CSS.alignment[name], name === this.data.alignment)
-                });
-            });
-        });
-
-        return wrapper;
+        return this._tunesButtons.map(tune => ({
+            icon: tune.icon,
+            label: this.api.i18n.t(tune.title),
+            onActivate: () => {
+                this._toggleTune(tune.value);
+            },
+            closeOnActivate: true,
+        }))
     }
 
 
@@ -295,7 +287,7 @@ export default class ParagraphEx {
      * @private
      * Click on the Settings Button
      * If the same alignment is clicked, we reset to default status
-     * @param {string} tune — tune name from this.settings
+     * @param {string} tune — tune value from this.settings
      */
     _toggleTune(tune) {
         if (this.data.alignment === tune) {
